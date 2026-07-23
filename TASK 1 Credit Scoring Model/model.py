@@ -225,10 +225,17 @@ print("\nProject Completed Successfully!")
 # ============================================
 
 prediction_df = pd.DataFrame({
-    "Actual": y_test.values,
-    "Predicted": y_pred
+    "Actual": y_test.map({
+        0: "Good Credit",
+        1: "Bad Credit"
+    }).values,
+
+    "Predicted": pd.Series(y_pred).map({
+        0: "Good Credit",
+        1: "Bad Credit"
+    })
 })
 
 prediction_df.to_csv("prediction_results.csv", index=False)
 
-print("\nPrediction results saved as prediction_results.csv")
+print("Prediction CSV Saved Successfully!")
