@@ -98,21 +98,15 @@ def encode_labels(labels):
 
 if __name__ == "__main__":
 
-    dataset_path = "."
+    dataset_path = "audio_speech_actors_01-24"
 
     X, y = load_dataset(dataset_path)
 
     y, encoder = encode_labels(y)
 
-    print()
+    print("\nTotal Samples:", len(X))
+    print("Feature Shape:", X.shape)
 
-    print("Classes:")
-    print(np.unique(y))
-
-    print()
-
-    print("Feature Shape:", X.shape) 
-    
-print("Emotion Classes:")
-for i, emotion in enumerate(encoder.classes_):
-    print(f"{i} -> {emotion}")
+    print("\nEmotion Classes:")
+    for i, emotion in enumerate(encoder.classes_):
+        print(f"{i} -> {emotion}")
